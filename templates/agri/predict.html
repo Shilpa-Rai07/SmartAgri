@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Smart Agriculture - Crop Recommendation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #a8e063, #56ab2f);
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 420px;
+            margin: 60px auto;
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+        h2 {
+            text-align: center;
+            color: #2e7d32;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            width: 100%;
+            background: #2e7d32;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #1b5e20;
+        }
+        .result {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 18px;
+            color: #1b5e20;
+            font-weight: bold;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 10px;
+            color: #555;
+            font-size: 12px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>🌾 Smart Crop Recommendation</h2>
+
+        <form method="post">
+            {% csrf_token %}
+            <input type="number" name="nitrogen" placeholder="Nitrogen (0–140 kg/ha)" required>
+            <input type="number" name="phosphorus" placeholder="Phosphorus (0–145 kg/ha)" required>
+            <input type="number" name="potassium" placeholder="Potassium (0–205 kg/ha)" required>
+            <input type="number" name="temperature" placeholder="Temperature (°C)" step="0.1" required>
+            <input type="number" name="humidity" placeholder="Humidity (%)" step="0.1" required>
+            <input type="number" name="ph" placeholder="Soil pH (3.5–9.5)" step="0.1" required>
+            <input type="number" name="rainfall" placeholder="Rainfall (mm)" step="0.1" required>
+            <button type="submit">Predict Best Crop</button>
+        </form>
+
+        {% if prediction %}
+            <div class="result">
+                🌱 Recommended Crop: {{ prediction }}
+            </div>
+        {% endif %}
+
+        <div class="footer">
+            AI-powered Smart Agriculture System
+        </div>
+    </div>
+</body>
+</html>
