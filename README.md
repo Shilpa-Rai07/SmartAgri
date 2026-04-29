@@ -11,7 +11,7 @@ SmartAgri is an intelligent agriculture system designed to assist farmers in mak
 
 ## 🛠️ Technologies Used
 - Python
-- Machine Learning (if used)
+- Machine Learning
 - Data Analysis
 - Libraries (Pandas, NumPy, etc.)
 
